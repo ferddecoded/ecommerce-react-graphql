@@ -1,11 +1,37 @@
+# any time you update your data model
+# will need to redploy on the command line
+# need our prisma database to be aware of any changes
+
+# list all the possible options
+# helpful for when you want a preset list of options for a type
+# can be one or many
+enum Permission {
+  AMIN
+  USER
+  ITEMCREATE
+  ITEMUPDATE
+  ITEMDELETE
+  PERMISSIONUPDATE
+}
+
 type User {
-  id: ID! @unique
+  # @id must be provided for any ID types
+  id: ID! @unique @id
+  updatedAt: DateTime! @updatedAt
+  createdAt: DateTime! @createdAt
   name: String!
-  email: String!
+  email: String! @unique
+  password: String!
+  resetToken: String
+  resetTokenExpiry: Float
+  # permission is going to be an enum
+  permissions: [Permission] @scalarList(strategy:RELATION)
 }
 
 type Item {
-  id: ID! @unique
+  id: ID! @unique @id
+  updatedAt: DateTime! @updatedAt
+  createdAt: DateTime! @createdAt
   title: String!
   description: String!
   image: String
