@@ -15,6 +15,7 @@ This project utilizes the following technologies:
   * GraphQL Yoga
   * Prisma
   * Next.js
+  * Node.js
   * Styled Components
 
 ## Features
