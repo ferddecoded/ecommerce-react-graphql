@@ -43,13 +43,13 @@ class Signin extends Component {
           },
         ]}
       >
-        {(signup, { error, loading }) => {
+        {(signin, { error, loading }) => {
           return (
             <Form
               method="post"
               onSubmit={async e => {
                 e.preventDefault();
-                await signup();
+                await signin();
                 this.setState({ name: '', email: '', password: '' });
               }}
             >
@@ -76,7 +76,7 @@ class Signin extends Component {
                     onChange={this.saveToState}
                   />
                 </label>
-                <button type="submit ">Sign Up!</button>
+                <button type="submit ">Sign In!</button>
               </fieldset>
             </Form>
           );

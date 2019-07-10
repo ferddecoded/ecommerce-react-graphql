@@ -20,6 +20,8 @@ type Mutation {
   # we will return a custom type that isnt tied to backend
   # we just want a success message that something happened
   signout: SuccessMessage
+  requestReset(email: String!): SuccessMessage
+  resetPassword(resetToken: String!, password: String!, confirmPassword: String!): User!
 }
 
 type Query {
@@ -27,4 +29,15 @@ type Query {
   item(where: ItemWhereUniqueInput!): Item
   itemsConnection(where: ItemWhereUniqueInput): ItemConnection!
   me: User
+}
+
+# we want to redefine User in our schema/ yoga server
+# to not return resetToken, avoiding anyone from resetting the token on the front end
+# we remove implements node because that concept does not exist in yoga
+type User  {
+  id: ID!
+  name: String!
+  email: String!
+  # permissions needs to be defined else it will pull it from the generated
+  permissions: [Permission!]!
 }
