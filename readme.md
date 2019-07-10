@@ -4,6 +4,8 @@
 
 Sick Fits is a mock e-commerce web application that contains the real functionality of an online reseller market.
 
+This project is a full stack application, with React and Appollo on the front end and Node.js on the backend.
+
 Users are able to create an account, post items they would like to sell, and transact payments of items.
 
 ## Technologies
