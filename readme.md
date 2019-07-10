@@ -1,14 +1,37 @@
-![Advanced React & GraphQL](https://advancedreact.com/images/ARG/arg-facebook-share.png)
+![Sick Fits]
 
-# Advanced React & GraphQL
+# Sick Fits
 
-These are the starter files and stepped solutions for the [Advanced React & GraphQL](https://AdvancedReact.com) course by [Wes Bos](https://WesBos.com/).
+Sick Fits is a mock e-commerce web application that contains the real functionality of an online reseller market.
 
-## Getting Help
+Users are able to create an account, post items they would like to sell, and transact payments of items.
 
-The best place to get help is in the #advanced-react slack room - there is a link in your course dashboard.
+## Technologies
 
-## FAQ
+This project utilizes the following technologies: 
+  * React
+  * GraphQL
+  * Appollo
+  * GraphQL Yoga
+  * Prisma
+  * Next.js
+  * Styled Components
 
-**Q:** Which Extensions for VS Code is Wes using?  
-**A:** All my extensions are listed on [my dotfiles repo](https://github.com/wesbos/dotfiles), but specifically this course uses [ESLint](https://github.com/Microsoft/vscode-eslint) and [Prettier](https://github.com/prettier/prettier-vscode).
+## Features
+
+This project as of now has the following features:
+  * User authentication
+  * Creating of items
+  * Deletion of items
+  * Updating of items
+  * Rendering Single and Multiple items
+  * Pagination
+
+Features to be worked on:
+  * transaction of payments
+  * password reset
+  * adding items to cart
+  * item search
+  * search autocomplete
+  * unit tests
+  * permissions management
