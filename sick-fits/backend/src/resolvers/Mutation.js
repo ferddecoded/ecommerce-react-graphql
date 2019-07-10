@@ -44,30 +44,56 @@ const Mutations = {
     return ctx.db.mutation.deleteItem({ where }, info);
   },
   async signup(parent, args, ctx, info) {
-    // lowercase the email
+    // lowercase their email
     args.email = args.email.toLowerCase();
-    // has their password
-    // we are not storing the user's password in the db
-    // 10 is a SALT; makes the generated hash unique
+    // hash their password
     const password = await bcrypt.hash(args.password, 10);
-    // create the user in the db
-    const user = await ctx.db.mutation.createUser({
-      data: {
-        ...args,
-        password,
-        permissions: { set: ['USER'] },
+    // create the user in the database
+    const user = await ctx.db.mutation.createUser(
+      {
+        data: {
+          ...args,
+          password,
+          permissions: { set: ['USER'] },
+        },
       },
-    }, info);
-    // below is to have user signed in after creating an account
-    // create JWT token for user
+      info
+    );
+    // create the JWT token for them
     const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
-    // we set the jwt as a cookie on the response with additional options
+    // We set the jwt as a cookie on the response
     ctx.response.cookie('token', token, {
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24 * 365, // 1 year cookie
     });
-    // finally return user to browser
+    // Finalllllly we return the user to the browser
     return user;
+  },
+  async signin(parents, { email, password }, ctx, info) {
+    // 1. check if their is a user with that email
+    const user = await ctx.db.query.user({ where: { email } });
+    if (!user) {
+      throw new Error(`No such user found for email: ${email}`);
+    }
+    // 2. check if their password is correct
+    const valid = await bcrypt.compare(password, user.password);
+    if (!valid) {
+      throw new Error(`Invalid Password`);
+    }
+    // 3. generate the jwt token
+    const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
+    // 4. set the cookie with the token
+    ctx.response.cookie('token', token, {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24 * 365, // 1 year cookie
+    });
+    // 5. return the user
+    return user;
+  },
+  signout(parents, args, ctx, info) {
+    // remove token from cookies
+    ctx.response.clearCookie('token');
+    return { message: 'Goodbye!' };
   }
 };
 

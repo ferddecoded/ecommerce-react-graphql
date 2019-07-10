@@ -5,16 +5,26 @@
 # anytime you add something to your schema that is a mutation or query
 # you must create the corresponding resolver
 
+type SuccessMessage {
+  message: String
+}
+
 type Mutation {
   createItem(title: String, description: String, price: Int, image: String, largeImage: String): Item!
   updateItem(id: ID!, title: String, description: String, price: Int): Item!
   deleteItem(id: ID!): Item
   # User comes from our imported graphql
   signup(email: String!, password: String!, name: String!): User!
+  signin(email: String!, password: String!): User!
+  # doesnt really need to return anything
+  # we will return a custom type that isnt tied to backend
+  # we just want a success message that something happened
+  signout: SuccessMessage
 }
 
 type Query {
   items(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, first: Int): [Item]!
   item(where: ItemWhereUniqueInput!): Item
   itemsConnection(where: ItemWhereUniqueInput): ItemConnection!
+  me: User
 }

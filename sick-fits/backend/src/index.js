@@ -1,4 +1,5 @@
 const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
 // we are using cookies as opposed to localStorage for User permissions
 // because of SSR, SSR with localStorage will not read permissions credentials
 // immediately
@@ -19,7 +20,11 @@ server.express.use((req, res, next) => {
   // cookieParser allows us to access any cookies
   // that come along the request
   const { token } = req.cookies;
-  console.log(token);
+  if (token) {
+    const { userId } = jwt.verify(token, process.env.APP_SECRET);
+    // put the userId on the req for future reqs to access
+    req.userId = userId;
+  }
   next();
 });
 
