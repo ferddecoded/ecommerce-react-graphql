@@ -28,6 +28,19 @@ server.express.use((req, res, next) => {
   next();
 });
 
+// create a middleware that populates the user on each request
+// this is being used to see permissions
+server.express.use(async (req, res, next) => {
+  // if they arent logged in, skip this
+  if (!req.userId) return next();
+  const user = await db.query.user(
+    { where: { id: req.userId } },
+    '{ id, permissions, email, name }',
+  );
+  req.user = user;
+  next();
+});
+
 server.start({
   // want our website to be hit from our specific urls
   cors: {

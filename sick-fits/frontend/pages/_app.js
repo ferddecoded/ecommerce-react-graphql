@@ -3,6 +3,10 @@ import { ApolloProvider } from 'react-apollo';
 import Page from '../components/Page';
 import withData from '../lib/withData';
 
+// this is good for keeping state when navigating pages
+// the entire app is wrapped in an App component which allows you to share data across pages
+// here, we use that to share query params
+
 class MyApp extends App {
   // runs before render
   static async getInitialProps({ Component, ctx }) {
@@ -13,6 +17,8 @@ class MyApp extends App {
     }
     // this exposes the query to the user
     pageProps.query = ctx.query;
+    // this exposes props in the render method
+    // this getInitalProps function is run before the render method
     return { pageProps };
   }
   render() {
@@ -30,4 +36,5 @@ class MyApp extends App {
   }
 }
 
+// withData makes the appolo client avaibale via this.props
 export default withData(MyApp);

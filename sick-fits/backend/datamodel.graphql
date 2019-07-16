@@ -6,7 +6,7 @@
 # helpful for when you want a preset list of options for a type
 # can be one or many
 enum Permission {
-  AMIN
+  ADMIN
   USER
   ITEMCREATE
   ITEMUPDATE
@@ -14,8 +14,9 @@ enum Permission {
   PERMISSIONUPDATE
 }
 
+# @id must be provided for any ID types
+# permission is going to be an enum
 type User {
-  # @id must be provided for any ID types
   id: ID! @unique @id
   updatedAt: DateTime! @updatedAt
   createdAt: DateTime! @createdAt
@@ -24,8 +25,8 @@ type User {
   password: String!
   resetToken: String
   resetTokenExpiry: Float
-  # permission is going to be an enum
-  permissions: [Permission] @scalarList(strategy:RELATION)
+  permissions: [Permission!]! @scalarList(strategy:RELATION)
+  cart: [CartItem!]!
 }
 
 type Item {
@@ -42,5 +43,14 @@ type Item {
   # we are using
   # createdAt: DateTime!
   # updatedAt: DateTime!
-  # user: User!
+  user: User!
+  # we include user in order to create the relationship of the item to the user
+  # who created it
+}
+
+type CartItem {
+  id: ID! @unique @id
+  quantity: Int! @default(value:1)
+  item: Item! #relationship to item
+  user: User! # relationship to User
 }

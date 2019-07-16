@@ -9,6 +9,19 @@ const CURRENT_USER_QUERY = gql`
       email
       name
       permissions
+      cart {
+        id
+        quantity
+        # due to the relationship created with cartItem
+        # we can ask for the item properties 
+        item {
+          id
+          price
+          image
+          description
+          title
+        }
+      }
     }
   }
 `;

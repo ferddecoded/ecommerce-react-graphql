@@ -8,7 +8,8 @@
     "playground": "graphql playground --dotenv variables.env",
     "test": "jest",
     "deploy": "prisma deploy --env-file variables.env",
-    "dev": "npm-run-all --parallel debug playground"
+    "dev": "npm-run-all --parallel debug playground",
+    "deployf": "prisma deploy --env-file variables.env --force"
   },
   "dependencies": {
     "babel-preset-env": "^1.7.0",

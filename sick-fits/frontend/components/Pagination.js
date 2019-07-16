@@ -21,6 +21,7 @@ const Pagination = ({ page }) => {
     <Query query={PAGINATION_QUERY}>
       {({ error, loading, data }) => {
         if (loading) return <p>Loading</p>;
+        if (error) return <Error error={error} />;
         const count = data.itemsConnection.aggregate.count;
         const pages = Math.ceil(count / perPage);
         return (
