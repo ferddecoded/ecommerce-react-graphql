@@ -8,29 +8,31 @@ Users are able to create an account, post items they would like to sell, and tra
 
 ## Technologies
 
-This project utilizes the following technologies: 
-  * React
-  * GraphQL
-  * Appollo
-  * GraphQL Yoga
-  * Prisma
-  * Next.js
-  * Node.js
-  * Styled Components
+This project utilizes the following technologies:
+
+- React
+- GraphQL
+- Appollo
+- GraphQL Yoga
+- Prisma
+- Next.js
+- Node.js
+- Styled Components
 
 ## Features
 
 This project as of now has the following features:
-  * User authentication
-  * Creating of items
-  * Deletion of items
-  * Updating of items
-  * Rendering Single and Multiple items
-  * Pagination
-  * transaction of payments
-  * password reset
-  * adding items to cart
-  * item search
-  * search autocomplete
-  * unit tests
-  * permissions management
+
+- User authentication
+- Creating of items
+- Deletion of items
+- Updating of items
+- User Creation
+- Rendering Single and Multiple items
+- Pagination
+- transaction of payments
+- password reset
+- adding items to cart
+- item search
+- search autocomplete
+- permissions management
