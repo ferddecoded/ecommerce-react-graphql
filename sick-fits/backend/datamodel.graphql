@@ -25,7 +25,7 @@ type User {
   password: String!
   resetToken: String
   resetTokenExpiry: Float
-  permissions: [Permission!]! @scalarList(strategy:RELATION)
+  permissions: [Permission!]! @scalarList(strategy: RELATION)
   cart: [CartItem!]!
 }
 
@@ -50,7 +50,33 @@ type Item {
 
 type CartItem {
   id: ID! @unique @id
-  quantity: Int! @default(value:1)
-  item: Item! #relationship to item
+  quantity: Int! @default(value: 1)
+  item: Item #relationship to item
   user: User! # relationship to User
+}
+
+# orderItem will be arefernce to a past order
+# we will not refenrece item as the item can be configured or deleted
+type OrderItem {
+  id: ID! @unique @id
+  updatedAt: DateTime! @updatedAt
+  createdAt: DateTime! @createdAt
+  title: String!
+  description: String!
+  image: String
+  largeImage: String
+  price: Int!
+  quantity: Int! @default(value: 1)
+  user: User
+}
+
+type Order {
+  id: ID! @unique @id
+  items: [OrderItem!]!
+  total: Int!
+  user: User!
+  charge: String!
+  # the below fields are always created, just need to reference it in datamodel
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }

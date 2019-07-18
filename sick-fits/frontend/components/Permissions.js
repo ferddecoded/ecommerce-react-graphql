@@ -4,6 +4,7 @@ import Error from './ErrorMessage';
 import Table from './styles/Table';
 import SickButton from './styles/SickButton';
 import PropTypes from 'prop-types';
+import isEmpty from 'lodash.isempty';
 
 const possiblePermissions = [
   'ADMIN',
@@ -58,9 +59,10 @@ const Permissions = props => (
               </tr>
             </thead>
             <tbody>
-              {data.users.map(user => (
-                <UserPermissions key={user.id} user={user} />
-              ))}
+              {!isEmpty(data) &&
+                data.users.map(user => (
+                  <UserPermissions key={user.id} user={user} />
+                ))}
             </tbody>
           </Table>
         </div>

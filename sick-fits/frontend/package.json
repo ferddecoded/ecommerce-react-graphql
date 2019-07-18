@@ -1,7 +1,7 @@
 {
   "name": "sick-fits-frontend",
   "version": "1.0.0",
-  "description": "Sick Fits! An example React, GraphQL, Next and Apollo",
+  "description": "Co-Sign! An example React, GraphQL, Next and Apollo",
   "main": "index.js",
   "scripts": {
     "dev": "next -p 7777",
@@ -25,6 +25,7 @@
     "graphql": "^14.0.2",
     "graphql-tag": "^2.9.2",
     "lodash.debounce": "^4.0.8",
+    "lodash.isempty": "^4.4.0",
     "next": "^7.0.0",
     "next-with-apollo": "^3.1.3",
     "nprogress": "^0.2.0",

@@ -1,5 +1,3 @@
-![Sick Fits]
-
 # Sick Fits
 
 Sick Fits is a mock e-commerce web application that contains the real functionality of an online reseller market.
@@ -29,8 +27,6 @@ This project as of now has the following features:
   * Updating of items
   * Rendering Single and Multiple items
   * Pagination
-
-Features to be worked on:
   * transaction of payments
   * password reset
   * adding items to cart

@@ -28,7 +28,7 @@ const Pagination = ({ page }) => {
           <PaginationStyles>
             <Head>
               <title>
-                Sick Fits | Page {page} of {pages}
+                Co-Sign | Page {page} of {pages}
               </title>
             </Head>
             <Link
@@ -41,7 +41,9 @@ const Pagination = ({ page }) => {
                 query: { page: page - 1 },
               }}
             >
-              <a className="prev" aria-disabled={page <= 1}>Prev</a>
+              <a className="prev" aria-disabled={page <= 1}>
+                Prev
+              </a>
             </Link>
             <p>
               Page {page} of {pages}
@@ -57,7 +59,9 @@ const Pagination = ({ page }) => {
                 query: { page: page + 1 },
               }}
             >
-              <a className="next" aria-disabled={page >= pages}>Next</a>
+              <a className="next" aria-disabled={page >= pages}>
+                Next
+              </a>
             </Link>
           </PaginationStyles>
         );

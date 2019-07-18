@@ -1,4 +1,4 @@
-import React, { Component } from 'react'; 
+import React, { Component } from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import Error from './ErrorMessage';
@@ -13,7 +13,7 @@ const SingleItemStyles = styled.div`
   grid-auto-columns: 1fr;
   grid-auto-flow: column;
   min-height: 800px;
-  
+
   img {
     width: 100%;
     height: 100%;
@@ -48,16 +48,18 @@ class SingleItem extends Component {
             if (!data.item) return <p>No item found for {this.props.id}</p>;
             console.log(data);
             const item = data.item;
-            return <SingleItemStyles>
-              <Head>
-                <title>Sick Fits | {item.title}</title>
-              </Head>
-              <img src={item.largeImage} alt={item.title} />
-              <div className="details">
-                <h2>Viewing: {item.title}</h2>
-                <p>{item.description}</p>
-              </div>
-            </SingleItemStyles>
+            return (
+              <SingleItemStyles>
+                <Head>
+                  <title>Co-Sign | {item.title}</title>
+                </Head>
+                <img src={item.largeImage} alt={item.title} />
+                <div className="details">
+                  <h2>Viewing: {item.title}</h2>
+                  <p>{item.description}</p>
+                </div>
+              </SingleItemStyles>
+            );
           }}
         </Query>
       </div>
