@@ -1,5 +1,6 @@
 #endpoint: ${env:PRISMA_ENDPOINT}
-endpoint: https://co-sign-production-2dad223726.herokuapp.com/co-sign-prod/prod
+#endpoint: https://co-sign-production-2dad223726.herokuapp.com/co-sign-prod/prod
+endpoint: https://co-sign-production-2dad223726.herokuapp.com/cosign-prod-1/prod
 datamodel: datamodel.graphql
 secret: ${env:PRISMA_SECRET}
 hooks:
