@@ -1,13 +1,13 @@
 import withApollo from 'next-with-apollo';
 import ApolloClient from 'apollo-boost';
-import { endpoint } from '../config';
+import { endpoint, prodEndpoint } from '../config';
 import { LOCAL_STATE_QUERY, TOGGLE_CART_MUTATION } from '../components/Cart';
 
 // where we created our applo client and appollo store
 // we will use this to also store our local data
 function createClient({ headers }) {
   return new ApolloClient({
-    uri: process.env.NODE_ENV === 'development' ? endpoint : endpoint,
+    uri: process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint,
     request: operation => {
       operation.setContext({
         fetchOptions: {
@@ -35,13 +35,13 @@ function createClient({ headers }) {
             };
             cache.writeData(data);
             return data;
-          }
-        }
+          },
+        },
       },
       defaults: {
         cartOpen: false,
-      }
-    }
+      },
+    },
   });
 }
 
