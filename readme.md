@@ -1,10 +1,14 @@
-# Sick Fits
+https://cosign-react-prod-1.herokuapp.com
 
-Sick Fits is a mock e-commerce web application that contains the real functionality of an online reseller market.
+# CO-SIGN
+
+CO-SIGN is a mock e-commerce web application that contains the real functionality of an online reseller market.
 
 This project is a full stack application, with React and Appollo on the front end and Node.js on the backend.
 
 Users are able to create an account, post items they would like to sell, and transact payments of items.
+
+This site is live at https://cosign-react-prod-1.herokuapp.com
 
 ## Technologies
 
@@ -36,3 +40,14 @@ This project as of now has the following features:
 - item search
 - search autocomplete
 - permissions management
+
+## /frontend
+
+`npm run dev` to initiate the front end.
+`npm run build` to build the package.
+`npm run test` to run all tests.
+
+## /backend
+
+`npm run dev` to initiate the back end.
+`npm run test` to run all tests.
