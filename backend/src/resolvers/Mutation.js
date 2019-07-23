@@ -146,11 +146,11 @@ const Mutations = {
     });
     // 3. email them that reset token
     await transport.sendMail({
-      from: 'ferdinand.ismael@gmail.com',
+      from: 'contact@ferddecoded.ca',
       to: user.email,
       subject: 'Your password Reset Token',
       html: makeANiceEmail(
-        `Your password token is here! \n\n <a href="${
+        `Your password token is here for Cosign! \n\n <a href="${
           process.env.FRONTEND_URL
         }/reset?resetToken=${resetToken}">Click to Reset!</a>`,
       ),
